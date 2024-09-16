@@ -3,6 +3,8 @@
 
 .data
 str: .asciz "hello\n"
+color: .quad 0xFF0000FF
+radius: .float 50.0
 
 .text
 _start:
@@ -25,8 +27,14 @@ run:
 	mov rsi, 200
 	mov rdx, 200
 	mov rcx, 30
-	mov r8, 0xFF0000FF
+	movd r8d, [color]
 	call DrawText
+
+	mov rdi, 450
+	mov rsi, 450
+	movss xmm0, [radius]
+	mov rdx, 0xFFaabbFF
+	call DrawCircle
 
 	call EndDrawing
 
@@ -38,3 +46,4 @@ close:
 	mov rax, 231
 	mov rdi, 0
 	syscall
+

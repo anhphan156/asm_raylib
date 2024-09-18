@@ -1,4 +1,5 @@
-main.o
+*.o
+test.s
 out
 .direnv
 .gdb_history
